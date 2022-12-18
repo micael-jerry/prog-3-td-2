@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,6 +37,14 @@ public class Team implements Serializable {
     @OneToMany(mappedBy = "team")
     @JsonIgnore
     private List<Player> players;
+
+    @ManyToMany
+    @JoinTable(
+            name = "have",
+            joinColumns = {@JoinColumn(name = "team_id")},
+            inverseJoinColumns = {@JoinColumn(name = "sponsor_id")}
+    )
+    private List<Sponsor> sponsors;
 
     @Override
     public boolean equals(Object o) {
