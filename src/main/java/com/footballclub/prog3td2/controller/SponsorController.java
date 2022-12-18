@@ -1,7 +1,8 @@
 package com.footballclub.prog3td2.controller;
 
 import com.footballclub.prog3td2.Service.SponsorService;
-import com.footballclub.prog3td2.model.Sponsor;
+import com.footballclub.prog3td2.controller.dto.SponsorDto;
+import com.footballclub.prog3td2.controller.mapper.SponsorMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +15,10 @@ import java.util.List;
 @RequestMapping(value = "/sponsors")
 public class SponsorController {
     private SponsorService sponsorService;
+    private SponsorMapper sponsorMapper;
 
     @GetMapping
-    public List<Sponsor> getAllSponsors() {
-        return sponsorService.getAll();
+    public List<SponsorDto> getAllSponsors() {
+        return sponsorService.getAll().stream().map(sponsorMapper::toRest).toList();
     }
 }

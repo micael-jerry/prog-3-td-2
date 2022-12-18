@@ -1,7 +1,8 @@
 package com.footballclub.prog3td2.controller;
 
 import com.footballclub.prog3td2.Service.TeamService;
-import com.footballclub.prog3td2.model.Team;
+import com.footballclub.prog3td2.controller.dto.TeamDto;
+import com.footballclub.prog3td2.controller.mapper.TeamMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +15,10 @@ import java.util.List;
 @RequestMapping(value = "/teams")
 public class TeamController {
     private TeamService teamService;
+    private TeamMapper teamMapper;
 
     @GetMapping
-    public List<Team> getAllTeam() {
-        return teamService.getAll();
+    public List<TeamDto> getAllTeam() {
+        return teamService.getAll().stream().map(teamMapper::toRest).toList();
     }
 }
