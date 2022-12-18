@@ -5,9 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +13,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
@@ -32,12 +28,4 @@ public class Sponsor implements Serializable {
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
-    @ManyToMany
-    @ToString.Exclude
-    @JoinTable(
-            name = "have",
-            joinColumns = @JoinColumn(name = "sponsor_id"),
-            inverseJoinColumns = @JoinColumn(name = "team_id")
-    )
-    private List<Team> teams;
 }
