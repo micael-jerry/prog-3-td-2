@@ -32,7 +32,7 @@ public class Sponsor implements Serializable {
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
-    @ManyToMany(mappedBy = "sponsors")
+    @ManyToMany
     @ToString.Exclude
     @JoinTable(
             name = "have",
