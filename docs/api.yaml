@@ -1,0 +1,235 @@
+openapi: 3.0.0
+servers:
+  - url: https://prog3_td2
+info:
+  version: "latest"
+  title: PROG3 - TD2
+paths:
+  /play_against:
+    get:
+      tags:
+        - PlayAgainst
+      summary: get all play_against
+      operationId: getPlayAgainst
+      responses:
+        '200':
+          description: List of play_against
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlayAgain'
+        '500':
+          description: Internal server error
+#    post:
+#      tags:
+#        - PlayAgain
+#      summary: create new play again
+#      operationId: createPlayAgain
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/CreatePlayAgain'
+#      responses:
+#        '200':
+#          description: List of created play again
+#          content:
+#            application/json:
+#              schema:
+#                type: array
+#                items:
+#                  $ref: '#/components/schemas/PlayAgain'
+#        '500':
+#          description: Internal server error
+  /teams:
+    get:
+      tags:
+        - Teams
+      summary: get all teams
+      operationId: getTeams
+      responses:
+        '200':
+          description: List of teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+#    post:
+#      tags:
+#        - Teams
+#      summary: create new teams
+#      operationId: createTeams
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/CreateTeam'
+#      responses:
+#        '200':
+#          description: List of created play again
+#          content:
+#            application/json:
+#              schema:
+#                type: array
+#                items:
+#                  $ref: '#/components/schemas/Team'
+#        '500':
+#          description: Internal server error
+  /players:
+    get:
+      tags:
+        - Players
+      summary: get all players
+      operationId: getPlayers
+      responses:
+        '200':
+          description: List of players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+#    post:
+#      tags:
+#        - Players
+#      summary: create new players
+#      operationId: createPlayers
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/CreatePlayer'
+#      responses:
+#        '200':
+#          description: List of created players
+#          content:
+#            application/json:
+#              schema:
+#                type: array
+#                items:
+#                  $ref: '#/components/schemas/Player'
+#        '500':
+#          description: Internal server error
+  /sponsors:
+    get:
+      tags:
+        - Sponsors
+      summary: get all sponsors
+      operationId: getSponsors
+      responses:
+        '200':
+          description: List of sponsors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+#    post:
+#      tags:
+#        - Sponsors
+#      summary: create new sponsors
+#      operationId: createSponsors
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/CreateSponsor'
+#      responses:
+#        '200':
+#          description: List of created sponsors
+#          content:
+#            application/json:
+#              schema:
+#                type: array
+#                items:
+#                  $ref: '#/components/schemas/Sponsor'
+#        '500':
+#          description: Internal server error
+components:
+  schemas:
+    CreatePlayAgain:
+      type: object
+      properties:
+        team_1:
+          $ref: '#/components/schemas/Team'
+        team_2:
+          $ref: '#/components/schemas/Team'
+        datetime:
+          type: string
+          format: date-time
+        stadium:
+          type: string
+    PlayAgain:
+      type: object
+      properties:
+        id:
+          type: integer
+        team_1:
+          $ref: '#/components/schemas/Team'
+        team_2:
+          $ref: '#/components/schemas/Team'
+        datetime:
+          type: string
+          format: date-time
+    CreateTeam:
+      type: object
+      properties:
+        name:
+          type: string
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+        players:
+          type: array
+          items:
+            $ref: '#/components/schemas/Player'
+        sponsors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sponsor'
+      allOf:
+        - $ref: '#/components/schemas/CreateTeam'
+    Player:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    CreatePlayer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        number:
+          type: integer
+        team_id:
+          type: integer
+    CreateSponsor:
+      type: object
+      properties:
+        name:
+          type: string
+    Sponsor:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
