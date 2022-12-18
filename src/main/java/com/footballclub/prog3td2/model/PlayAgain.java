@@ -1,9 +1,11 @@
 package com.footballclub.prog3td2.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -27,9 +29,11 @@ public class PlayAgain implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
-    private Team team_1;
+    @JoinColumn(name = "team1_id")
+    private Team team1;
     @ManyToOne
-    private Team team_2;
+    @JoinColumn(name = "team2_id")
+    private Team team2;
     private Instant datetime;
     private String stadium;
 }

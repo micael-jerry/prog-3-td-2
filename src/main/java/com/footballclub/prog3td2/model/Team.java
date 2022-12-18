@@ -46,6 +46,9 @@ public class Team implements Serializable {
     )
     private List<Sponsor> sponsors;
 
+    @OneToMany
+    private List<PlayAgain> playAgainst;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

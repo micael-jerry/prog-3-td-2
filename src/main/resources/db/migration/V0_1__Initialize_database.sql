@@ -31,9 +31,9 @@ create table have
 create table play_again
 (
     id        integer primary key,
-    team_id_1 integer references team ("id") not null
-        constraint team_play_again check ( team_id_1 != team_id_2 ),
-    team_id_2 integer references team ("id") not null,
+    team1_id integer references team ("id") not null
+        constraint team_play_again check ( team1_id != team2_id ),
+    team2_id integer references team ("id") not null,
     datetime  date,
     stadium   varchar(100)
 );
