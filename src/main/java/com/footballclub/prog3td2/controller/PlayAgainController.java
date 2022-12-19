@@ -5,6 +5,7 @@ import com.footballclub.prog3td2.controller.dto.PlayAgainDto;
 import com.footballclub.prog3td2.controller.mapper.PlayAgainMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,10 @@ public class PlayAgainController {
     @GetMapping
     public List<PlayAgainDto> getAllPlayAgainst() {
         return playAgainService.getAll().stream().map(playAgainMapper::toRest).toList();
+    }
+
+    @GetMapping(value = "/teams/{teamId}")
+    public List<PlayAgainDto> getAllByTeam(@PathVariable Integer teamId) {
+        return playAgainService.getAllByTeamId(teamId).stream().map(playAgainMapper::toRest).toList();
     }
 }

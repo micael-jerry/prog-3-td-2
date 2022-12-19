@@ -34,6 +34,6 @@ create table play_again
     team1_id integer references team ("id") not null
         constraint team_play_again check ( team1_id != team2_id ),
     team2_id integer references team ("id") not null,
-    datetime  date,
+    datetime  timestamp with time zone,
     stadium   varchar(100)
 );
