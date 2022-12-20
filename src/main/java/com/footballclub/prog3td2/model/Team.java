@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +36,7 @@ public class Team implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "team")
+    @OrderBy(value = "number")
     @JsonIgnore
     private List<Player> players;
 
