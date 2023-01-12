@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class PlayAgainMapper {
     private TeamMapper teamMapper;
+    private GoalMapper goalMapper;
 
     public PlayAgainDto toRest(PlayAgain playAgain) {
         return PlayAgainDto.builder()
@@ -16,6 +17,13 @@ public class PlayAgainMapper {
                 .datetime(playAgain.getDatetime())
                 .team1(playAgain.getTeam1() != null ? teamMapper.toRest(playAgain.getTeam1()) : null)
                 .team2(playAgain.getTeam2() != null ? teamMapper.toRest(playAgain.getTeam2()) : null)
+                .goals(
+                        playAgain.getGoals()
+                                .stream().map(goalMapper::toRest)
+                                .toList()
+                )
+                .team1_score(playAgain.getTeam1_score())
+                .team2_score(playAgain.getTeam2_score())
                 .build();
     }
 

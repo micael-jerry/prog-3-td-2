@@ -23,6 +23,13 @@ public class PlayAgainController {
         return playAgainService.getAll().stream().map(playAgainMapper::toRest).toList();
     }
 
+    @GetMapping(value = "/{id}")
+    public PlayAgainDto getPlayAgainstById(@PathVariable Integer id) {
+        return playAgainMapper.toRest(
+                playAgainService.getById(id)
+        );
+    }
+
     @GetMapping(value = "/teams/{teamId}")
     public List<PlayAgainDto> getAllByTeam(@PathVariable Integer teamId) {
         return playAgainService.getAllByTeamId(teamId).stream().map(playAgainMapper::toRest).toList();
