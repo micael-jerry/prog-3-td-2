@@ -29,7 +29,8 @@ public class Player implements Serializable {
     @Column(length = 100)
     private String name;
     private Integer number;
-
+    @Column(name = "is_guardian",columnDefinition = "boolean default false")
+    private boolean isGuardian;
     @ManyToOne
     private Team team;
 }

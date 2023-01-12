@@ -13,6 +13,7 @@ create table player
     number  integer
         constraint player_number_limitation check ( number > 0 and number < 100)
 );
+alter table player add column is_guardian boolean default false;
 
 create table sponsor
 (

@@ -13,6 +13,7 @@ public class PlayerMapper {
         return PlayerDto.builder()
                 .id(player.getId())
                 .name(player.getName())
+                .isGuardian(player.isGuardian())
                 .build();
     }
 
@@ -20,6 +21,7 @@ public class PlayerMapper {
         Player player = new Player();
         player.setId(playerDto.getId());
         player.setName(playerDto.getName());
+        player.setGuardian(playerDto.isGuardian());
         return player;
     }
 
