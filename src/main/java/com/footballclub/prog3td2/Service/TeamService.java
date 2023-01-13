@@ -1,5 +1,6 @@
 package com.footballclub.prog3td2.Service;
 
+import com.footballclub.prog3td2.controller.exception.BadRequestException;
 import com.footballclub.prog3td2.model.Team;
 import com.footballclub.prog3td2.repository.TeamRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,10 @@ public class TeamService {
     }
 
     public Team getById(Integer id) {
-        return teamRepository.getReferenceById(id);
+        if (teamRepository.existsById(id)) {
+            return teamRepository.getReferenceById(id);
+        } else {
+            throw new BadRequestException("Id: " + id + " not exist");
+        }
     }
 }
