@@ -15,4 +15,8 @@ public class TeamService {
     public List<Team> getAll() {
         return teamRepository.findAll();
     }
+
+    public Team getById(Integer id) {
+        return teamRepository.getReferenceById(id);
+    }
 }
