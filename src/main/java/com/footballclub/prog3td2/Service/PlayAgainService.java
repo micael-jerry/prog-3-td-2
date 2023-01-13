@@ -39,9 +39,17 @@ public class PlayAgainService {
     public PlayAgain updateInfo(PlayAgain playAgain) {
         playAgain.getGoals().forEach(goal -> {
             if (playAgain.getTeam1().getPlayers().contains(goal.getPlayer())) {
-                playAgain.setTeam1_score(playAgain.getTeam1_score() + 1);
+                if (goal.isOnGoal()) {
+                    playAgain.setTeam1_score(playAgain.getTeam1_score() + 1);
+                } else {
+                    playAgain.setTeam2_score(playAgain.getTeam2_score() + 1);
+                }
             } else if (playAgain.getTeam2().getPlayers().contains(goal.getPlayer())) {
-                playAgain.setTeam2_score(playAgain.getTeam2_score() + 1);
+                if (goal.isOnGoal()) {
+                    playAgain.setTeam2_score(playAgain.getTeam2_score() + 1);
+                } else {
+                    playAgain.setTeam1_score(playAgain.getTeam1_score() + 1);
+                }
             }
         });
         return playAgain;
