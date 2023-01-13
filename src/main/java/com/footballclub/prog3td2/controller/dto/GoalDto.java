@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 public class GoalDto {
     private Integer id;
-    private Integer playAgainId;
-    private Integer playerId;
+    private Integer play_against_id;
+    private Integer player_id;
     private Integer time;
-    private boolean isOnGoal;
+    private boolean is_on_goal;
 }

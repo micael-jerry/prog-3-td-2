@@ -16,20 +16,20 @@ public class GoalMapper {
     public GoalDto toRest(Goal goal) {
         return GoalDto.builder()
                 .id(goal.getId())
-                .playAgainId(goal.getPlayAgain().getId())
-                .playerId(goal.getPlayer().getId())
+                .play_against_id(goal.getPlayAgain().getId())
+                .player_id(goal.getPlayer().getId())
                 .time(goal.getTime())
-                .isOnGoal(goal.isOnGoal())
+                .is_on_goal(goal.isOnGoal())
                 .build();
     }
 
     public Goal toDomain(GoalDto goalDto) {
         Goal goal = new Goal();
         goal.setId(goalDto.getId());
-        goal.setPlayAgain(playAgainRepository.getReferenceById(goalDto.getPlayAgainId()));
-        goal.setPlayer(playerRepository.getReferenceById(goalDto.getPlayerId()));
+        goal.setPlayAgain(playAgainRepository.getReferenceById(goalDto.getPlay_against_id()));
+        goal.setPlayer(playerRepository.getReferenceById(goalDto.getPlayer_id()));
         goal.setTime(goalDto.getTime());
-        goal.setOnGoal(goalDto.isOnGoal());
+        goal.setOnGoal(goalDto.is_on_goal());
         return goal;
     }
 }

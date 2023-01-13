@@ -1,7 +1,6 @@
 package com.footballclub.prog3td2.controller.mapper;
 
 import com.footballclub.prog3td2.controller.dto.PlayerDto;
-import com.footballclub.prog3td2.controller.dto.SponsorDto;
 import com.footballclub.prog3td2.model.Player;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +12,7 @@ public class PlayerMapper {
         return PlayerDto.builder()
                 .id(player.getId())
                 .name(player.getName())
-                .isGuardian(player.isGuardian())
+                .is_guardian(player.isGuardian())
                 .build();
     }
 
@@ -21,7 +20,7 @@ public class PlayerMapper {
         Player player = new Player();
         player.setId(playerDto.getId());
         player.setName(playerDto.getName());
-        player.setGuardian(playerDto.isGuardian());
+        player.setGuardian(playerDto.is_guardian());
         return player;
     }
 

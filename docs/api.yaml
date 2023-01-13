@@ -55,7 +55,7 @@ paths:
                   $ref: '#/components/schemas/Team'
         '500':
           description: Internal server error
-  /teams/{teamId}:
+  /teams/{team_id}:
     get:
       tags:
         - Teams
@@ -189,9 +189,9 @@ components:
       properties:
         id:
           type: integer
-        team1_score:
+        team_1_score:
           type: integer
-        team2_score:
+        team_2_score:
           type: integer
         goals:
           type: array
@@ -231,7 +231,7 @@ components:
           type: integer
         name:
           type: string
-        isGuardian:
+        is_guardian:
           type: boolean
     CreatePlayer:
       type: object
@@ -261,11 +261,11 @@ components:
       properties:
         id:
           type: integer
-        playAgainstId:
+        play_against_id:
           type: integer
-        playerId:
+        player_id:
           type: integer
         time:
           type: integer
-        isOnGoal:
+        is_on_goal:
           type: boolean

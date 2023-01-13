@@ -12,10 +12,10 @@ import java.util.List;
 @Setter
 public class PlayAgainDto {
     private Integer id;
-    private Integer team1_score;
-    private Integer team2_score;
+    private Integer team_1_score;
+    private Integer team_2_score;
     private List<GoalDto> goals;
-    private TeamDto team1;
-    private TeamDto team2;
+    private TeamDto team_1;
+    private TeamDto team_2;
     private Instant datetime;
 }

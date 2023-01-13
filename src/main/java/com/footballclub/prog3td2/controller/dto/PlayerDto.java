@@ -10,5 +10,5 @@ import lombok.Setter;
 public class PlayerDto {
     private Integer id;
     private String name;
-    private boolean isGuardian;
+    private boolean is_guardian;
 }
