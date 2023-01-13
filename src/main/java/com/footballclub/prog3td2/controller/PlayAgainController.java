@@ -29,12 +29,12 @@ public class PlayAgainController {
     }
 
     @GetMapping(value = "/teams/{teamId}/play_against")
-    public List<PlayAgainDto> getAllByTeam(@PathVariable Integer teamId) {
+    public List<PlayAgainDto> getPlayAgainstByTeam(@PathVariable Integer teamId) {
         return playAgainService.getAllByTeamId(teamId).stream().map(playAgainMapper::toRest).toList();
     }
 
     @GetMapping(value = "/teams/{teamId}/play_against/{id}")
-    public PlayAgainDto getByTeamIdAndPlayAgainstId(@PathVariable Integer id, @PathVariable Integer teamId) {
+    public PlayAgainDto getPlayAgainstByTeamIdAndPlayAgainstId(@PathVariable Integer id, @PathVariable Integer teamId) {
         return playAgainMapper.toRest(
                 playAgainService.getByTeamIdAndId(teamId, id)
         );

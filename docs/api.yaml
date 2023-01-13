@@ -22,27 +22,22 @@ paths:
                   $ref: '#/components/schemas/PlayAgain'
         '500':
           description: Internal server error
-#    post:
-#      tags:
-#        - PlayAgain
-#      summary: create new play again
-#      operationId: createPlayAgain
-#      requestBody:
-#        content:
-#          application/json:
-#            schema:
-#              $ref: '#/components/schemas/CreatePlayAgain'
-#      responses:
-#        '200':
-#          description: List of created play again
-#          content:
-#            application/json:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/PlayAgain'
-#        '500':
-#          description: Internal server error
+  /play_against/{id}:
+    get:
+      tags:
+        - PlayAgainst
+      summary: get play against by id
+      operationId: getPlayAgainstById
+      responses:
+        '200':
+          description: Play against by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayAgain'
+        '500':
+          description: Internal server error
+
   /teams:
     get:
       tags:
@@ -60,27 +55,52 @@ paths:
                   $ref: '#/components/schemas/Team'
         '500':
           description: Internal server error
-#    post:
-#      tags:
-#        - Teams
-#      summary: create new teams
-#      operationId: createTeams
-#      requestBody:
-#        content:
-#          application/json:
-#            schema:
-#              $ref: '#/components/schemas/CreateTeam'
-#      responses:
-#        '200':
-#          description: List of created play again
-#          content:
-#            application/json:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/Team'
-#        '500':
-#          description: Internal server error
+  /teams/{teamId}:
+    get:
+      tags:
+        - Teams
+      summary: get team by id
+      operationId: getTeamById
+      responses:
+        200:
+          description: Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+  /teams/{team_id}/play_against:
+    get:
+      tags:
+        - Teams
+      summary: get play against by team id
+      operationId: getPlayAgainstByTeam
+      responses:
+        200:
+          description: Play against by team
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlayAgain'
+        '500':
+          description: Internal server error
+  /teams/{team_id}/play_against/{play_against_id}:
+    get:
+      tags:
+        - Teams
+      summary: get play against by team id and play againstId
+      operationId: getPlayAgainstByTeamIdAndPlayAgainstId
+      responses:
+        200:
+          description: Play against by team id and play against id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayAgain'
+
   /players:
     get:
       tags:
@@ -98,27 +118,7 @@ paths:
                   $ref: '#/components/schemas/Player'
         '500':
           description: Internal server error
-#    post:
-#      tags:
-#        - Players
-#      summary: create new players
-#      operationId: createPlayers
-#      requestBody:
-#        content:
-#          application/json:
-#            schema:
-#              $ref: '#/components/schemas/CreatePlayer'
-#      responses:
-#        '200':
-#          description: List of created players
-#          content:
-#            application/json:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/Player'
-#        '500':
-#          description: Internal server error
+
   /sponsors:
     get:
       tags:
@@ -136,27 +136,7 @@ paths:
                   $ref: '#/components/schemas/Sponsor'
         '500':
           description: Internal server error
-#    post:
-#      tags:
-#        - Sponsors
-#      summary: create new sponsors
-#      operationId: createSponsors
-#      requestBody:
-#        content:
-#          application/json:
-#            schema:
-#              $ref: '#/components/schemas/CreateSponsor'
-#      responses:
-#        '200':
-#          description: List of created sponsors
-#          content:
-#            application/json:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/Sponsor'
-#        '500':
-#          description: Internal server error
+
 components:
   schemas:
     CreatePlayAgain:
