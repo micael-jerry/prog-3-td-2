@@ -24,6 +24,12 @@ public class PlayAgainService {
         );
     }
 
+    public PlayAgain getByTeamIdAndId(Integer teamId, Integer id) {
+        return this.updateInfo(
+                playAgainRepository.findByTeam1_IdOrTeam2_IdAndId(teamId, teamId, id)
+        );
+    }
+
     public List<PlayAgain> getAllByTeamId(Integer id) {
         return playAgainRepository.findAllByTeam1_IdOrTeam2_Id(id, id)
                 .stream().map(this::updateInfo)

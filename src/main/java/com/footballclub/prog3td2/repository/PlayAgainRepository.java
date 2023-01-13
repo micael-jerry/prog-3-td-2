@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface PlayAgainRepository extends JpaRepository<PlayAgain, Integer> {
     List<PlayAgain> findAllByTeam1_IdOrTeam2_Id(Integer team1_id, Integer team2_id);
+
+    PlayAgain findByTeam1_IdOrTeam2_IdAndId(Integer team1_id, Integer team2_id, Integer id);
 }
