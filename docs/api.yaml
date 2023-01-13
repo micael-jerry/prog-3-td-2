@@ -101,6 +101,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/PlayAgain'
 
+  /goals:
+    get:
+      tags:
+        - Goals
+      summary: get all goals
+      operationId: findAllGoals
+      responses:
+        '200':
+          description: List of goals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Goal'
+        '500':
+          description: Internal server error
+  /goals/{id}:
+    get:
+      tags:
+        - Goals
+      summary: get goal by id
+      operationId: findGoalById
+      responses:
+        '200':
+          description: Goal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Goal'
+        '500':
+          description: Internal server error
+
   /players:
     get:
       tags:
@@ -156,6 +189,14 @@ components:
       properties:
         id:
           type: integer
+        team1_score:
+          type: integer
+        team2_score:
+          type: integer
+        goals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Goal'
         team_1:
           $ref: '#/components/schemas/Team'
         team_2:
@@ -215,3 +256,16 @@ components:
           type: integer
         name:
           type: string
+    Goal:
+      type: object
+      properties:
+        id:
+          type: integer
+        playAgainstId:
+          type: integer
+        playerId:
+          type: integer
+        time:
+          type: integer
+        isOnGoal:
+          type: boolean
