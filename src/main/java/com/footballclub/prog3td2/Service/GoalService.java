@@ -21,7 +21,7 @@ public class GoalService {
     }
 
     public Goal findById(Integer id) {
-        return goalRepository.findById(id).get();
+        return goalRepository.getReferenceById(id);
     }
 
     public List<Goal> findAllByPlayerId(Integer playerId) {
