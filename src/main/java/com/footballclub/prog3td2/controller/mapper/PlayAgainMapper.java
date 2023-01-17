@@ -17,8 +17,13 @@ public class PlayAgainMapper {
                 .datetime(playAgain.getDatetime())
                 .team_1(playAgain.getTeam1() != null ? teamMapper.toRest(playAgain.getTeam1()) : null)
                 .team_2(playAgain.getTeam2() != null ? teamMapper.toRest(playAgain.getTeam2()) : null)
-                .goals(
-                        playAgain.getGoals()
+                .team_1_goals(
+                        playAgain.getTeam1_goals()
+                                .stream().map(goalMapper::toRest)
+                                .toList()
+                )
+                .team_2_goals(
+                        playAgain.getTeam2_goals()
                                 .stream().map(goalMapper::toRest)
                                 .toList()
                 )

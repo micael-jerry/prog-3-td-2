@@ -1,10 +1,12 @@
 package com.footballclub.prog3td2.Service;
 
+import com.footballclub.prog3td2.model.Goal;
 import com.footballclub.prog3td2.model.PlayAgain;
 import com.footballclub.prog3td2.repository.PlayAgainRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,21 +39,33 @@ public class PlayAgainService {
     }
 
     public PlayAgain updateInfo(PlayAgain playAgain) {
+        return this.info(playAgain);
+    }
+
+    public PlayAgain info(PlayAgain playAgain) {
+        List<Goal> goalList1 = new ArrayList<>();
+        List<Goal> goalList2 = new ArrayList<>();
         playAgain.getGoals().forEach(goal -> {
             if (playAgain.getTeam1().getPlayers().contains(goal.getPlayer())) {
                 if (goal.isOnGoal()) {
                     playAgain.setTeam1_score(playAgain.getTeam1_score() + 1);
+                    goalList1.add(goal);
                 } else {
                     playAgain.setTeam2_score(playAgain.getTeam2_score() + 1);
+                    goalList2.add(goal);
                 }
             } else if (playAgain.getTeam2().getPlayers().contains(goal.getPlayer())) {
                 if (goal.isOnGoal()) {
                     playAgain.setTeam2_score(playAgain.getTeam2_score() + 1);
+                    goalList2.add(goal);
                 } else {
                     playAgain.setTeam1_score(playAgain.getTeam1_score() + 1);
+                    goalList1.add(goal);
                 }
             }
         });
+        playAgain.setTeam1_goals(goalList1);
+        playAgain.setTeam2_goals(goalList2);
         return playAgain;
     }
 }

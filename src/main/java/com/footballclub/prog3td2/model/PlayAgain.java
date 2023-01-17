@@ -42,4 +42,8 @@ public class PlayAgain implements Serializable {
     private int team1_score;
     @Transient
     private int team2_score;
+    @Transient
+    private List<Goal> team1_goals;
+    @Transient
+    private List<Goal> team2_goals;
 }

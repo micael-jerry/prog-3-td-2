@@ -14,7 +14,8 @@ public class PlayAgainDto {
     private Integer id;
     private Integer team_1_score;
     private Integer team_2_score;
-    private List<GoalDto> goals;
+    private List<GoalDto> team_1_goals;
+    private List<GoalDto> team_2_goals;
     private TeamDto team_1;
     private TeamDto team_2;
     private Instant datetime;
