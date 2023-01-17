@@ -17,7 +17,7 @@ public class GoalService {
     }
 
     public List<Goal> findAllByPlayAgainst(Integer playAgainstId) {
-        return goalRepository.findAllByPlayAgain_Id(playAgainstId);
+        return goalRepository.findAllByPlayAgainst_Id(playAgainstId);
     }
 
     public Goal findById(Integer id) {

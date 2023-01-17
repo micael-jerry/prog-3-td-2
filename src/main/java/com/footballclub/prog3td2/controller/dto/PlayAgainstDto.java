@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
-public class PlayAgainDto {
+public class PlayAgainstDto {
     private Integer id;
     private Integer team_1_score;
     private Integer team_2_score;

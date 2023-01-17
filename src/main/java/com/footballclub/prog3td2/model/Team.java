@@ -49,7 +49,7 @@ public class Team implements Serializable {
     private List<Sponsor> sponsors;
 
     @OneToMany
-    private List<PlayAgain> playAgainst;
+    private List<PlayAgainst> playAgainst;
 
     @Override
     public boolean equals(Object o) {

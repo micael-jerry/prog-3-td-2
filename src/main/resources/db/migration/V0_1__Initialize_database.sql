@@ -29,11 +29,11 @@ create table have
     primary key (team_id, sponsor_id)
 );
 
-create table play_again
+create table play_against
 (
     id        integer primary key,
     team1_id integer references team ("id") not null
-        constraint team_play_again check ( team1_id != team2_id ),
+        constraint team_play_against check ( team1_id != team2_id ),
     team2_id integer references team ("id") not null,
     datetime  timestamp with time zone,
     stadium   varchar(100)

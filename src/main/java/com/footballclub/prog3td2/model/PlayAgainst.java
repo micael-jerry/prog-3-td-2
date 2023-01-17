@@ -23,8 +23,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "play_again")
-public class PlayAgain implements Serializable {
+@Table(name = "play_against")
+public class PlayAgainst implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -36,7 +36,7 @@ public class PlayAgain implements Serializable {
     private Team team2;
     private Instant datetime;
     private String stadium;
-    @OneToMany(mappedBy = "playAgain")
+    @OneToMany(mappedBy = "playAgainst")
     private List<Goal> goals;
     @Transient
     private int team1_score;

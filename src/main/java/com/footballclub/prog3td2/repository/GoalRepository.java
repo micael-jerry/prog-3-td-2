@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface GoalRepository extends JpaRepository<Goal, Integer> {
-    List<Goal> findAllByPlayAgain_Id(Integer playAgainstId);
+    List<Goal> findAllByPlayAgainst_Id(Integer playAgainstId);
     List<Goal> findAllByPlayer_Id(Integer playerId);
 }

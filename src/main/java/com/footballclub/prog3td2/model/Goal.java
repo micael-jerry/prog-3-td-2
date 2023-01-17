@@ -25,8 +25,8 @@ public class Goal implements Serializable {
     @Id
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "play_again_id", nullable = false)
-    private PlayAgain playAgain;
+    @JoinColumn(name = "play_against_id", nullable = false)
+    private PlayAgainst playAgainst;
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
