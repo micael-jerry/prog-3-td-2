@@ -157,7 +157,7 @@ paths:
       tags:
         - Sponsors
       summary: get all sponsors
-      operationId: getSponsors
+      operationId: getAllSponsors
       responses:
         '200':
           description: List of sponsors
@@ -167,6 +167,21 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+  /sponsors/{id}:
+    get:
+      tags:
+        - Sponsors
+      summary: get sponsor by id
+      operationId: getSponsor
+      responses:
+        '200':
+          description: only sponsor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sponsor'
         '500':
           description: Internal server error
 
