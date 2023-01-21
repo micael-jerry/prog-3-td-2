@@ -23,4 +23,8 @@ public class SponsorService {
         }
         throw new BadRequestException("Id: " + id + " not exist");
     }
+
+    public List<Sponsor> saveAll(List<Sponsor> sponsorList) {
+        return sponsorRepository.saveAll(sponsorList);
+    }
 }
