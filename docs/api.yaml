@@ -199,6 +199,28 @@ paths:
                   $ref: '#/components/schemas/Sponsor'
         '500':
           description: Internal server error
+    post:
+      tags:
+        - Sponsors
+      summary: Add new sponsors
+      description: add new sponsors and a sponsor must have at least one team.
+      operationId: postSponsors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateSponsor'
+      responses:
+        '200':
+          description: The updated match with new scores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
   /sponsors/{id}:
     get:
       tags:
