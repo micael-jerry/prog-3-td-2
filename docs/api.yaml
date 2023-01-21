@@ -70,6 +70,19 @@ paths:
                 $ref: '#/components/schemas/Team'
         '500':
           description: Internal server error
+  /teams/{team_id}/players:
+    get:
+      tags:
+        - Teams
+      summary: get players by team id
+      operationId: getPlayersByTeamId
+      responses:
+        200:
+          description: Players by team id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
   /teams/{team_id}/play_against:
     get:
       tags:

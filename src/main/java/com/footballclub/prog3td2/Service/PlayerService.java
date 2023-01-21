@@ -16,4 +16,8 @@ public class PlayerService {
     public List<Player> getAll() {
         return playerRepository.findAll(Sort.by(Sort.Direction.ASC,"number"));
     }
+
+    public List<Player> getAllByTeamId(Integer id) {
+        return playerRepository.findAllByTeam_Id(id);
+    }
 }
