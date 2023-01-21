@@ -1,13 +1,11 @@
 package com.footballclub.prog3td2.controller;
 
 import com.footballclub.prog3td2.Service.SponsorService;
+import com.footballclub.prog3td2.controller.dto.CreateSponsorDto;
 import com.footballclub.prog3td2.controller.dto.SponsorDto;
 import com.footballclub.prog3td2.controller.mapper.SponsorMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,16 @@ public class SponsorController {
         return sponsorMapper.toRest(
                 sponsorService.getById(id)
         );
+    }
+
+    @PostMapping
+    public List<SponsorDto> postSponsors(@RequestBody List<CreateSponsorDto> createSponsorDtoList) {
+        return sponsorService.saveAll(
+                        createSponsorDtoList.stream()
+                                .map(sponsorMapper::toDomain)
+                                .toList()
+                ).stream()
+                .map(sponsorMapper::toRest)
+                .toList();
     }
 }

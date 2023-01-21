@@ -1,5 +1,6 @@
 package com.footballclub.prog3td2.controller.mapper;
 
+import com.footballclub.prog3td2.controller.dto.CreateSponsorDto;
 import com.footballclub.prog3td2.controller.dto.SponsorDto;
 import com.footballclub.prog3td2.model.Sponsor;
 import org.springframework.stereotype.Component;
@@ -28,5 +29,12 @@ public class SponsorMapper {
 
     public List<Sponsor> toDomain(List<SponsorDto> sponsorDtoList) {
         return sponsorDtoList.stream().map(this::toDomain).toList();
+    }
+
+    public Sponsor toDomain(CreateSponsorDto createSponsorDto) {
+        Sponsor sponsor = new Sponsor();
+        sponsor.setName(createSponsorDto.getName());
+        sponsor.setTeams(List.of());
+        return sponsor;
     }
 }
