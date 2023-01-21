@@ -12,5 +12,5 @@ public class GoalDto {
     private Integer play_against_id;
     private Integer player_id;
     private Integer time;
-    private boolean is_on_goal;
+    private boolean is_own_goal;
 }

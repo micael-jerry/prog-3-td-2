@@ -46,18 +46,24 @@ public class PlayAgainstService {
         List<Goal> goalList1 = new ArrayList<>();
         List<Goal> goalList2 = new ArrayList<>();
         playAgainst.getGoals().forEach(goal -> {
+//          Check if the player who scored belongs to team 1
             if (playAgainst.getTeam1().getPlayers().contains(goal.getPlayer())) {
-                if (goal.isOnGoal()) {
+//              If the goal is not in his own camp, increase the score of team 1
+                if (!goal.isOwnGoal()) {
                     playAgainst.setTeam1_score(playAgainst.getTeam1_score() + 1);
                     goalList1.add(goal);
+//              If not, award the goal to the opponent
                 } else {
                     playAgainst.setTeam2_score(playAgainst.getTeam2_score() + 1);
                     goalList2.add(goal);
                 }
+//          Check if the player who scored belongs to team 2
             } else if (playAgainst.getTeam2().getPlayers().contains(goal.getPlayer())) {
-                if (goal.isOnGoal()) {
+//              If the goal is not in his own camp, increase the score of team 2
+                if (!goal.isOwnGoal()) {
                     playAgainst.setTeam2_score(playAgainst.getTeam2_score() + 1);
                     goalList2.add(goal);
+//              If not, award the goal to the opponent
                 } else {
                     playAgainst.setTeam1_score(playAgainst.getTeam1_score() + 1);
                     goalList1.add(goal);

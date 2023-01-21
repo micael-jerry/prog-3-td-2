@@ -19,7 +19,7 @@ public class GoalMapper {
                 .play_against_id(goal.getPlayAgainst().getId())
                 .player_id(goal.getPlayer().getId())
                 .time(goal.getTime())
-                .is_on_goal(goal.isOnGoal())
+                .is_own_goal(goal.isOwnGoal())
                 .build();
     }
 
@@ -29,7 +29,7 @@ public class GoalMapper {
         goal.setPlayAgainst(playAgainstRepository.getReferenceById(goalDto.getPlay_against_id()));
         goal.setPlayer(playerRepository.getReferenceById(goalDto.getPlayer_id()));
         goal.setTime(goalDto.getTime());
-        goal.setOnGoal(goalDto.is_on_goal());
+        goal.setOwnGoal(goalDto.is_own_goal());
         return goal;
     }
 }

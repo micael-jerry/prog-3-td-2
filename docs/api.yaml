@@ -312,5 +312,5 @@ components:
           type: integer
         time:
           type: integer
-        is_on_goal:
+        is_own_goal:
           type: boolean

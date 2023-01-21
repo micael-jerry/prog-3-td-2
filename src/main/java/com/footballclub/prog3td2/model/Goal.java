@@ -32,6 +32,6 @@ public class Goal implements Serializable {
     private Player player;
     @Column(nullable = false)
     private int time;
-    @Column(name = "on_goal", nullable = false)
-    private boolean isOnGoal;
+    @Column(name = "is_own_goal", nullable = false)
+    private boolean isOwnGoal;
 }
