@@ -23,3 +23,5 @@ insert into player(team_id,id,name,number) values (2,19,'camavinga',12);
 insert into player(team_id,id,name,number) values (2,20,'valverde',15);
 insert into player(team_id,id,name,number) values (2,21,'benzema',9);
 insert into player(team_id,id,name,number) values (2,22,'kroos',8);
+
+create sequence player_seq as integer start 23;

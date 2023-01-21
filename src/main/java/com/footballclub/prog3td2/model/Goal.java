@@ -1,11 +1,6 @@
 package com.footballclub.prog3td2.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +18,8 @@ import java.io.Serializable;
 @Table(name = "goal")
 public class Goal implements Serializable {
     @Id
+    @SequenceGenerator(name = "goal_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "goal_seq")
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "play_against_id", nullable = false)
